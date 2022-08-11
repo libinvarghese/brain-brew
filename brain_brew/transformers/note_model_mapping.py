@@ -43,9 +43,10 @@ class NoteModelMapping(YamlRepr):
     @classmethod
     def yamale_schema(cls) -> str:
         return f'''\
-            note_models: any(list(str()), str())
-            columns_to_fields: map(str(), key=str(), required=False)
-            personal_fields: list(str(), required=False)
+            # Purpose: Mapping of CSV columns to noe model fields
+            note_models: any(list(str()), str())    # Note Models to attach to. Refer `note_models_from_yaml_part`
+            columns_to_fields: map(str(), key=str(), required=False)    # csv fieldname to note model feild mapping
+            personal_fields: list(str(), required=False) # Refer https://github.com/ohare93/brain-brew#personal-fields
         '''
 
     @dataclass

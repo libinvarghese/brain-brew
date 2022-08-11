@@ -21,8 +21,9 @@ class CrowdAnkiGenerate(TopLevelBuildTask):
     @classmethod
     def yamale_schema(cls) -> str:
         return f'''\
-            folder: str()
-            headers: str()
+            # Purpose: Generate Crowd Anki
+            folder: str()   # Destination folder
+            headers: str()  # Header part_id reference. Refer `headers_from_yaml_part`
             notes: include('{NotesToCrowdAnki.task_name()}')
             note_models: include('{NoteModelsToCrowdAnki.task_name()}')
             media: include('{MediaGroupToCrowdAnki.task_name()}', required=False)

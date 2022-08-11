@@ -23,8 +23,10 @@ class GenerateGuidsInCsvs(TopLevelBuildTask):
     @classmethod
     def yamale_schema(cls) -> str:
         return f'''\
-            source: any(str(), list(str()))
-            columns: any(str(), list(str()))
+            # Purpose: Creates unique anki guid for each note in the csv, if not present in the columns mentions
+            # Refer: source_to_anki
+            source: any(str(), list(str())) # str() = csvfilepath
+            columns: any(str(), list(str()))  # str() = fieldnames
             delimiter: str(required=False)
         '''
 

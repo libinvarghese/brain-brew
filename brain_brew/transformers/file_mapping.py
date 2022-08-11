@@ -25,12 +25,13 @@ class FileMappingDerivative(YamlRepr):
     @classmethod
     def yamale_schema(cls) -> str:
         return f'''\
-            file: str()
+            # Purpose: provides a list of csv files (derivates). refer `notes_from_csvs`
+            file: str() # csvfilepath
             note_model: str(required=False)
             sort_by_columns: list(str(), required=False)
             reverse_sort: bool(required=False)
             case_insensitive_sort: bool(required=False)
-            derivatives: list(include('{cls.task_name()}'), required=False)
+            derivatives: list(include('{cls.task_name()}'), required=False) # Refer https://github.com/ohare93/brain-brew#csv-splitting--derivatives
             delimiter: str(required=False)
         '''
 

@@ -20,11 +20,12 @@ class NotesToCrowdAnki(YamlRepr, SharedBaseNotes):
     @classmethod
     def yamale_schema(cls) -> str:
         return f'''\
-            part_id: str()
+            # Purpose: Includes all notes from cvs/yaml
+            part_id: str()  # Reference to notes_from_csvs/notes_from_yaml_part
             sort_order: list(str(), required=False)
             reverse_sort: bool(required=False)
-            additional_items_to_add: map(str(), key=str(), required=False)
-            override: include('{NotesOverride.task_name()}', required=False)
+            additional_items_to_add: map(str(), key=str(), required=False)  # Additional key/value pairs to add to note
+            override: include('{NotesOverride.task_name()}', required=False)    # Allows to overrides fields defined in notes (commonly note_model)
             case_insensitive_sort: bool(required=False)
         '''
 

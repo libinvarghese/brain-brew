@@ -23,8 +23,9 @@ class NotesFromCsvs(SharedBaseCsvs, BuildPartTask):
     @classmethod
     def yamale_schema(cls) -> str:
         return f'''\
+            # Purpose: Fetch notes from csv's
             part_id: str()
-            save_to_file: str(required=False)
+            save_to_file: str(required=False)   # Creates a yaml file for this part
             note_model_mappings: list(include('{NoteModelMapping.task_name()}'))
             file_mappings: list(include('{FileMapping.task_name()}'))
         '''
